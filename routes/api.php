@@ -29,6 +29,7 @@ Route::middleware(['auth:api','role:admin'])->group(function () {
     Route::post('/user-save', [LoginController::class,'register']);
     Route::post('/delete-user', [LoginController::class,'deleteUser']);
     Route::post('/view-employees', [LoginController::class,'List']);
+    Route::post('/view-report', [TaskController::class,'Report']);
 });
 
 // dept_head different routes
@@ -41,4 +42,5 @@ Route::middleware(['auth:api','role:dept_head'])->group(function () {
 // dept_head and employee comman routes
 Route::middleware(['auth:api','role:dept_head|employee'])->group(function () {
     Route::post('/view-tasks', [TaskController::class,'List']);
+    Route::post('/submit-report', [TaskController::class,'emp_report']);
 });

@@ -42,7 +42,8 @@ class RolesAndPermissionSeeder extends Seeder
                 'delete-employee',
                 'view-employee',
                 'view-task',
-                'delete-task'
+                'delete-task',
+                'view-report'
             ]);
         }
 

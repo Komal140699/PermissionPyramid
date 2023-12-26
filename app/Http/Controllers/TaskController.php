@@ -37,7 +37,7 @@ class TaskController extends Controller
                 }
                 else
                 {
-                    $rows=Task::orderBy("id","desc")->paginate(5);
+                    $rows=Task::select('task_name','user_id')->orderBy("id","desc")->paginate(5);
                 }
 
                 $this->res["message"]='Success';            
@@ -147,6 +147,70 @@ class TaskController extends Controller
         }
         return response()->json($this->res,$this->res['status_code']);
 
+    }
+
+    public function emp_report(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:tasks',
+            'report' => ['required','in:pending,review,completed']    
+        ]);
+
+        // get user role
+        $userRole = auth()->user()->getRoleNames();
+        $userRole=$userRole[0];
+        $role = Role::findByName($userRole);         
+        $permissionRequired = 'allocate-task';
+
+        // checking user permission
+        $permission =   $role->hasPermissionTo($permissionRequired);
+        if($this->checkAndGetErrors()) {
+            if($permission)
+            {
+                Task::where('id', $request->id)->update(['report' => $request->report]);
+                $this->res['status_code'] = 200;
+                $this->res['status'] = true;
+                $this->res['message'] = "Report Added";
+            }
+            else {
+                $this->res["message"] ="you are not authorised to create this task";
+            }
+        }
+        return response()->json($this->res,$this->res['status_code']);
+
+    }
+
+
+    public function Report(Request $request)
+    {
+        $user = auth()->user();
+        $request->validate([
+            'id' => 'required|exists:users'        
+        ]);
+        // get user role
+        $userRole = auth()->user()->getRoleNames();
+        $userRole=$userRole[0];
+        $role = Role::findByName($userRole);         
+        $permissionRequired = 'view-report';
+
+        // checking user permission
+        $permission =   $role->hasPermissionTo($permissionRequired);
+        if($this->checkAndGetErrors()) {
+            if($permission)
+            {
+                $rows=Task::where('user_id',$request->id)->orderBy("id","desc")->paginate(5);
+
+                $this->res["message"]='Success';            
+                $this->res['status_code'] = 200;
+                $this->res['status'] = true;
+                $this->res['data'] = $rows;
+            }
+            else {
+                $this->res["message"] ="you are not authorised to view tasks";
+            }
+        }
+
+        return response()->json($this->res,$this->res['status_code']);
     }
 
 }
