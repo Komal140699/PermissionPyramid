@@ -1,6 +1,7 @@
 What is in this project :
     This project is an illustration to laravel-spatie [Role and permission management]
     In this project i have taken users with different roles ie. admin, dept_head, employee .
+    
     Admin Role :
     Admin can create employees,delete,view employees .
     Admin can also view task based report of employees .
@@ -11,10 +12,12 @@ What is in this project :
     Employee :
     Employee can only view tasks allocated to him.
 
+
 Technology used :
     I have used Laravel 10 in this project.
     Laravel spatie version 6.2 is used in this project .
-    Jwt authentication version 2.1 is used in this project . 
+    Jwt authentication version 2.1 is used in this project .
+
 
 Here are the steps for installation for our role and permission example-app :
     1. Clone this project.
