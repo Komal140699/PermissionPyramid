@@ -8,339 +8,445 @@
 	},
 	"item": [
 		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "superadmin@ultivic.com",
-							"type": "text"
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Add new employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "Ultivic@292",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}login",
-					"host": [
-						"{{base_url}}login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add new employee",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Komal",
-							"type": "text"
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Komal",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "komal.arora@ultivic.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Ultivic@292",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "Ultivic@292",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "dept_head",
+									"description": "Options: dept_head,employee",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "email",
-							"value": "komal.arora@ultivic.com",
-							"type": "text"
+						"url": {
+							"raw": "{{base_url}}user-save",
+							"host": [
+								"{{base_url}}user-save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "Ultivic@292",
-							"type": "text"
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "password_confirmation",
-							"value": "Ultivic@292",
-							"type": "text"
+						"url": {
+							"raw": "{{base_url}}delete-user",
+							"host": [
+								"{{base_url}}delete-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Employees",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "role",
-							"value": "dept_head",
-							"description": "Options: dept_head,employee",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}user-save",
-					"host": [
-						"{{base_url}}user-save"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete employee",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "3",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}delete-user",
-					"host": [
-						"{{base_url}}delete-user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "View Employees",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{base_url}}view-employees",
-					"host": [
-						"{{base_url}}view-employees"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Task",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "task_name",
-							"value": "task1",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}create-task",
-					"host": [
-						"{{base_url}}create-task"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Allocate Task",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "1",
-							"type": "text"
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
-						{
-							"key": "user_id",
-							"value": "4",
-							"type": "text"
+						"url": {
+							"raw": "{{base_url}}view-employees",
+							"host": [
+								"{{base_url}}view-employees"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url}}allocate-task",
-					"host": [
-						"{{base_url}}allocate-task"
-					]
+				{
+					"name": "view report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}view-report",
+							"host": [
+								"{{base_url}}view-report"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Delete Task",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+			"name": "Department Head",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "task_name",
+									"value": "task1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}create-task",
+							"host": [
+								"{{base_url}}create-task"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "3",
-							"type": "text"
+				{
+					"name": "Delete Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}delete-user",
+							"host": [
+								"{{base_url}}delete-user"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base_url}}delete-user",
-					"host": [
-						"{{base_url}}delete-user"
-					]
+				{
+					"name": "Allocate Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}allocate-task",
+							"host": [
+								"{{base_url}}allocate-task"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Task List",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
+			"name": "Comman",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "superadmin@ultivic.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "superadmin@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}login",
+							"host": [
+								"{{base_url}}login"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "id",
-							"value": "3",
-							"type": "text"
+				{
+					"name": "Task List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}view-tasks",
+							"host": [
+								"{{base_url}}view-tasks"
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}view-tasks",
-					"host": [
-						"{{base_url}}view-tasks"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Submit Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "report",
+									"value": "pending",
+									"description": "options:pending,review,completed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}submit-report",
+							"host": [
+								"{{base_url}}submit-report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
