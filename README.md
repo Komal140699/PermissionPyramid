@@ -23,7 +23,7 @@ Here are the steps for installation for our role and permission example-app :
     1. Clone this project.<br>
     2. Run  "composer install" command.<br>
     3. Make an .env file using .env.example file.<br>
-    3. Run  "php artisan jwt:secret" to generate secret key for JWT authentication and copy paste the secret key in .env file .<br>
+    3. Run  "php artisan jwt:secret" to generate secret key for JWT authentication and copy paste the secret key in .env file.<br>
     4. Run "php artisan view:clear;php artisan route:clear;php artisan config:clear;php artisan cache:clear;" to clear cache.<br>
     5. Make new database named "role_management".<br>
     6. Now Run "php artisan migrate" command. <br>
